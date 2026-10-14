@@ -1,0 +1,56 @@
+<?php
+/**
+ * Copyright © 2026 Roman Pasichnyk
+ * SPDX-License-Identifier: OSL-3.0 OR AFL-3.0
+ *
+ * Above the search results: a note when only close spellings matched, the
+ * categories, brands, posts and pages the query finds, and the store's
+ * popular searches when no product matched.
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Zero\Search\ViewModel\Search $search
+ */
+$search = $block->getData('search');
+$query = $search->queryText();
+if ($query === '') {
+    return;
+}
+$count = $search->resultCount();
+$more = $search->more($search::RESULTS_LIMIT);
+$popular = $count ? [] : $search->popular();
+?>
+<?php if ($search->typosForgiven() || $more || $popular): ?>
+<div class="zero-search-more mb-6 flex flex-col gap-3">
+    <?php if ($search->typosForgiven()): ?>
+        <p class="alert alert-warning alert-soft text-sm py-2" data-zero-search-typos>
+            <?= $escaper->escapeHtml(__('Nothing matches "%1" exactly; these are close spellings.', $query)) ?>
+        </p>
+    <?php endif; ?>
+    <?php foreach ($more as $code => $section): ?>
+        <nav class="flex flex-wrap items-center gap-2" data-zero-search-section="<?= $escaper->escapeHtmlAttr($code) ?>"
+             aria-label="<?= $escaper->escapeHtmlAttr($section['title']) ?>">
+            <span class="text-sm text-base-content/70 me-1"><?= $escaper->escapeHtml($section['title']) ?>:</span>
+            <?php foreach ($section['items'] as $item): ?>
+                <a class="badge badge-outline badge-lg hover:badge-primary" href="<?= $escaper->escapeUrl($item['url']) ?>">
+                    <?= $escaper->escapeHtml($item['name']) ?>
+                    <?php if (($item['note'] ?? '') !== ''): ?>
+                        <span class="text-base-content/60 text-xs"><?= $escaper->escapeHtml($item['note']) ?></span>
+                    <?php endif; ?>
+                </a>
+            <?php endforeach; ?>
+        </nav>
+    <?php endforeach; ?>
+    <?php if ($popular): ?>
+        <nav class="flex flex-wrap items-center gap-2" data-zero-search-popular
+             aria-label="<?= $escaper->escapeHtmlAttr(__('Popular searches')) ?>">
+            <span class="text-sm text-base-content/70 me-1"><?= $escaper->escapeHtml(__('Popular searches')) ?>:</span>
+            <?php foreach ($popular as $term): ?>
+                <a class="badge badge-outline badge-lg hover:badge-primary" href="<?= $escaper->escapeUrl($term['url']) ?>">
+                    <?= $escaper->escapeHtml($term['title']) ?>
+                </a>
+            <?php endforeach; ?>
+        </nav>
+    <?php endif; ?>
+</div>
+<?php endif; ?>

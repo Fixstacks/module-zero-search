@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+    Copyright © 2026 Roman Pasichnyk
+    SPDX-License-Identifier: OSL-3.0 OR AFL-3.0
+
+    The search box's suggestions, with categories, brands, posts and pages
+    besides products, and popular searches in the empty box.
+-->
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <referenceBlock name="zero.search.suggest" template="Zero_Search::suggest.phtml">
+        <arguments>
+            <argument name="search" xsi:type="object">Zero\Search\ViewModel\Search</argument>
+        </arguments>
+    </referenceBlock>
+</layout>

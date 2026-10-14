@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+    Copyright © 2026 Roman Pasichnyk
+    SPDX-License-Identifier: OSL-3.0 OR AFL-3.0
+
+    Above the results: typos forgiven, what else the search finds, popular
+    searches when it finds nothing.
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="zero.search.more" before="search.result"
+                   template="Zero_Search::results.phtml">
+                <arguments>
+                    <argument name="search" xsi:type="object">Zero\Search\ViewModel\Search</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

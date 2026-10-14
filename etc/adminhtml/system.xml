@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+    Copyright © 2026 Roman Pasichnyk
+    SPDX-License-Identifier: OSL-3.0 OR AFL-3.0
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="zero_search" translate="label" type="text" sortOrder="94" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Search</label>
+            <tab>zero</tab>
+            <resource>Zero_Search::config</resource>
+            <group id="general" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Search</label>
+                <comment>Synonyms ("tee" = "t-shirt") and redirects for a term: Marketing > SEO &amp; Search > Search Synonyms, Search Terms.</comment>
+                <field id="typo_tolerance" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Forgive Typos</label>
+                    <comment>When a search finds nothing as typed, close spellings are searched ("jaket" finds jackets), and the page says so.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="more_results" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Categories, Brands, Pages and Posts</label>
+                    <comment>In the search box's suggestions and above the search results, besides products.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="popular_count" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Popular Searches</label>
+                    <comment>How many of the store's most searched terms (that found something) the empty search box and a search with no results offer. 0: none.</comment>
+                    <validate>validate-digits</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

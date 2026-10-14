@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+    Copyright © 2026 Roman Pasichnyk
+    SPDX-License-Identifier: OSL-3.0 OR AFL-3.0
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <zero_search>
+            <general>
+                <typo_tolerance>1</typo_tolerance>
+                <more_results>1</more_results>
+                <popular_count>6</popular_count>
+            </general>
+        </zero_search>
+    </default>
+</config>

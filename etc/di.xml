@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+    Copyright © 2026 Roman Pasichnyk
+    SPDX-License-Identifier: OSL-3.0 OR AFL-3.0
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Forgive typos: a search that finds nothing is run once more, its words matched fuzzily. -->
+    <type name="Magento\Search\Model\SearchEngine">
+        <plugin name="zero_search_typos" type="Zero\Search\Plugin\TypoFallback"/>
+    </type>
+    <type name="Magento\Elasticsearch\SearchAdapter\Query\Builder\MatchQuery">
+        <plugin name="zero_search_typos" type="Zero\Search\Plugin\FuzzyMatch"/>
+    </type>
+</config>
