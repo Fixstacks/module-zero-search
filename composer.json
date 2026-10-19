@@ -2,7 +2,7 @@
     "name": "fixstacks/module-zero-search",
     "description": "Zero for Magento Open Source: store search that forgives typos and finds categories, pages and posts too.",
     "type": "magento2-module",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "license": [
         "OSL-3.0",
         "AFL-3.0"
